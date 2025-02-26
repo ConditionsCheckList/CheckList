@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Condition Checklist</title>
+    <style>
+        /* Style for medical conditions */
+        body {
+            background-color: #f0f3f8; /* Light blue */
+            font-family: Arial, sans-serif;
+        }
+
+        fieldset {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background-color: #fff; /* White */
+        }
+
+        legend {
+            font-weight: bold;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555; /* Dark gray */
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        input[type="button"] {
+            padding: 15px 30px; /* Increased padding */
+            background-color: #70a1ff; /* Light blue */
+            border: none;
+            border-radius: 5px;
+            color: #fff; /* White */
+            cursor: pointer;
+            font-size: 18px; /* Increased font size */
+        }
+
+        input[type="button"]:hover {
+            background-color: #4d88ff; /* Darker blue */
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            background-color: #fff; /* White */
+            color: #555; /* Dark gray */
+            font-size: 18px; /* Increased font size */
+            height: 300px; /* Increased height */
+        }
+
+        /* Positioning the result box to the right */
+        #resultContainer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 80%; /* Adjust as needed */
+            margin: 0 auto; /* Center alignment */
+        }
+
+        #resultBox {
+            width: 50%;
+            margin: 0 auto;
+             text-align: center;/* Adjust as needed */
+        }
+
+        #generateButton {
+            width: 30%; /* Adjust as needed */
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #333;">Medical Condition Checklist</h1>
+    <form>
+        <label for="age" style="color: #333;">Age:</label>
+        <input type="text" id="age" name="age"><br><br>
+
+        <fieldset>
+            <legend style="color: #333;">Medical Conditions:</legend>
+            <label><input type="checkbox" id="chk_KHK" name="condition" value="KHK"> KHK (I25.-)</label>
+            <label><input type="checkbox" id="chk_Diabetes_mellitus" name="condition" value="Diabetes mellitus"> Diabetes mellitus (E10.-, E11.-, E12.-,
+E13.-, E14.-)</label>
+            <label><input type="checkbox" id="chk_Niereninsuffizienz" name="condition" value="Niereninsuffizienz"> Niereninsuffizienz (N18.-, N19)</label>
+            <label><input type="checkbox" id="chk_Herzinsuffizienz" name="condition" value="Herzinsuffizienz"> Herzinsuffizienz (I50.-,
+I11.0-, I13.0-, I13.2-)</label>
+            <label><input type="checkbox" id="chk_Parkinson" name="condition" value="Parkinson"> Parkinson (G20.-,
+G21.-)</label>
+            <label><input type="checkbox" id="chk_Leichte_kognitive_Störung" name="condition" value="Leichte kognitive Störung"> Leichte kognitive Störung (F06.7)</label> 
+            <label><input type="checkbox" id="chk_COPD_Grad_III" name="condition" value="COPD Grad III"> COPD Grad III (J44.00,
+J44.01, J44.10, J44.11, J44.80,
+J44.81, J44.90, J44.91)</label>
+            <label><input type="checkbox" id="chk_COPD_Grad_IV" name="condition" value="COPD Grad IV"> COPD Grad IV (J44.00,
+J44.01, J44.10, J44.11, J44.80,
+J44.81, J44.90, J44.91)</label>
+            <label><input type="checkbox" id="chk_respiratorische_Insuffizienz" name="condition" value="COPD mit respiratorische Insuffizienz">respiratorische Insuffizienz (J96.1-)</label>
+            <label><input type="checkbox" id="chk_Rauchen" name="condition" value="Rauchen"> Rauchen (Smoking)</label>
+            <label><input type="checkbox" id="chk_Eisenmangelanämie" name="condition" value="Eisenmangelanämie"> Eisenmangelanämie (E61.1)</label>
+            <label><input type="checkbox" id="chk_Zerebrale_Atherosklerose" name="condition" value="Zerebrale Atherosklerose"> Zerebrale Atherosklerose (I67.2)</label>
+            <label><input type="checkbox" id="chk_Folgen_eines_Hirninfarkts" name="condition" value="Folgen eines Hirninfarkts"> Folgen eines Hirninfarkts (I69.3)</label>
+            <label><input type="checkbox" id="chk_Folgen_eines_Schlaganfalls" name="condition" value="Folgen eines Schlaganfalls"> Folgen eines Schlaganfalls (I69.4)</label>
+            <label><input type="checkbox" id="chk_Gelenkschmerzen_im_Hüft_oder_Kniegelenk" name="condition" value="Gelenkschmerzen im Hüft- oder Kniegelenk"> Gelenkschmerzen im Hüft- oder Kniegelenk (M25.50, M25.55,
+M25.56, M25.59)</label>
+            <label><input type="checkbox" id="chk_Asymptomatische_Hyperurikämie" name="condition" value="Asymptomatische Hyperurikämie"> Asymptomatische Hyperurikämie (E79.0)</label>
+            <label><input type="checkbox" id="chk_Gicht" name="condition" value="Gicht"> Gicht (M10.-)</label>
+            <label><input type="checkbox" id="chk_Adipositas" name="condition" value="Adipositas"> Adipositas (E66.-)</label>
+            <label><input type="checkbox" id="chk_Varus_oder_Valgusfehlstellung_des_Hüft_oder_Kniegelenks" name="condition" value="Varus- oder Valgusfehlstellung des Hüft- bzw. Kniegelenks"> Varus- oder Valgusfehlstellung des Hüft- bzw. Kniegelenks (M21.15, M21.05,
+M21.16, M21.06)</label>
+            <label><input type="checkbox" id="chk_Periphere_Gefäßkrankheit" name="condition" value="Periphere Gefäßkrankheit"> Periphere Gefäßkrankheit (I73.9)</label>
+            <label><input type="checkbox" id="chk_Atherosklerosen" name="condition" value="Atherosklerosen"> Atherosklerosen (I70.0, I70.1,
+I70.8, I70.9)</label>
+            <label><input type="checkbox" id="chk_Hypertonie" name="condition" value="Hypertonie"> Hypertonie (I10.-)</label>
+            <label><input type="checkbox" id="chk_Demenz" name="condition" value="Demenz"> Demenz (F00.-*, F01.-,
+F02.-* oder F03)</label>
+            <label><input type="checkbox" id="chk_Asthma_bronchiale" name="condition" value="Asthma bronchiale"> Asthma bronchiale (J45.-)</label>
+            <label><input type="checkbox" id="chk_Atherosklerose_der_Extremitätenarterien" name="condition" value="Atherosklerose der Extremitätenarterien"> Atherosklerose der Extremitätenarterien (I70.2-)</label>
+            <!-- Newly added conditions -->
+            <label><input type="checkbox" id="chk_Senilität" name="condition" value="Senilität"> Senilität (R54)</label>
+            <label><input type="checkbox" id="chk_Verwirrtheitszustand" name="condition" value="Verwirrtheitszustand"> Verwirrtheitszustand (R41.0)</label>
+            <label><input type="checkbox" id="chk_Organische_psychische_Störung" name="condition" value="Organische psychische Störung ohne nähere Angabe"> Organische psychische Störung ohne nähere Angabe (F06.9)</label>
+            <label><input type="checkbox" id="chk_Depressive_Episode" name="condition" value="Depressive Episode nicht näher bezeichnet"> Depressive Episode nicht näher bezeichnet (F32.9)</label>
+            <label><input type="checkbox" id="chk_Hypothyreose" name="condition" value="Hypothyreose"> Hypothyreose (E03.-)</label>
+            <label><input type="checkbox" id="chk_Exsikkose" name="condition" value="Exsikkose"> Exsikkose (E86)</label>
+            <label><input type="checkbox" id="chk_Arthrose_Hüftgelenks" name="condition" value="Arthrose des Hüftgelenks"> Arthrose des Hüftgelenks (M16,-)</label>
+            <label><input type="checkbox" id="chk_Arthrose_Kniegelenks" name="condition" value="Arthrose des Kniegelenks"> Arthrose des Kniegelenks (M17,-)</label>
+        </fieldset>
+ 
+        <br>
+       <div id="resultContainer">
+            <!-- Generate Result button -->
+            <input type="button" value="Generate Result" onclick="generateResult()" id="generateButton">
+            
+            <!-- Result box -->
+            <div id="resultBox">
+                <label for="additionalInfo" style="color: #333;">Result:</label><br>
+                <textarea id="additionalInfo" name="additionalInfo" readonly></textarea><br><br>
+            </div>
+        </div>
+ 
+    </form>
+ 
+    <script>
+        function generateResult() {
+            var age = parseInt(document.getElementById("age").value);
+            var conditions = document.getElementsByName("condition");
+            var resultText = "";
+ 
+            // Loop through conditions to check if any is checked
+            var checkedConditions = [];
+            for (var i = 0; i < conditions.length; i++) {
+                if (conditions[i].checked) {
+                    checkedConditions.push(conditions[i].value);
+                }
+            }
+ 
+            // Check conditions based on age and checked conditions
+            if (age >= 75 && checkedConditions.some(condition => [
+                "KHK", "Diabetes mellitus", "Niereninsuffizienz", "Herzinsuffizienz",
+                "COPD", "Parkinson", "Leichte kognitive Störung", "Senilität",
+                "Verwirrtheitszustand", "Organische psychische Störung ohne nähere Angabe",
+                "Depressive Episode nicht näher bezeichnet", "Hypothyreose",
+                "Exsikkose", "Zerebrale Atherosklerose", "Folgen eines Hirninfarkts",
+                "Folgen eines Schlaganfalls"].includes(condition))&& !checkedConditions.includes("Demenz")) {
+                resultText += "91860,";
+            } 
+            if (age >= 45 && checkedConditions.some(condition => [
+                "Gelenkschmerzen im Hüft- oder Kniegelenk",
+                "Asymptomatische Hyperurikämie", "Gicht", "Diabetes mellitus",
+                "Adipositas", "Varus- oder Valgusfehlstellung des Hüft- bzw. Kniegelenks"
+            ].includes(condition))&& !checkedConditions.includes("Arthrose des Kniegelenks")&& !checkedConditions.includes("Arthrose des Hüftgelenks")) {
+                resultText += "91865,";
+            } 
+            
+            if (checkedConditions.includes("Herzinsuffizienz")&& !checkedConditions.includes("Eisenmangelanämie")) {
+                resultText += "91870,";
+            } 
+            
+            if ((checkedConditions.includes("COPD Grad IV")||checkedConditions.includes("COPD Grad III"))&& !checkedConditions.includes("COPD mit respiratorische Insuffizienz")) {
+                resultText += "91875,";
+            } 
+            
+           
+            if ((age >= 50 && checkedConditions.some(condition => [
+                "Periphere Gefäßkrankheit", "Atherosklerosen", "KHK",
+                "Diabetes mellitus", "Hypertonie"
+            ].includes(condition))&& !checkedConditions.includes("Atherosklerose der Extremitätenarterien")) || (age >= 60 && checkedConditions.includes("Rauchen"))&& !checkedConditions.includes("Atherosklerose der Extremitätenarterien")) {
+                resultText += "91880,";
+            } 
+            
+            
+            if (age >= 40 && (checkedConditions.includes("COPD Grad III") || checkedConditions.includes("COPD Grad IV"))) {
+                resultText += "91886,";
+            }
+            if (age >= 75 && checkedConditions.includes("Demenz") ) {
+    resultText += "91861,";
+} 
+
+if ((age >= 45) && (checkedConditions.includes("Arthrose des Kniegelenks") || checkedConditions.includes("Arthrose des Hüftgelenks")) ) {
+    resultText += "91866,";
+} 
+
+if (checkedConditions.includes("Eisenmangelanämie") ) {
+    resultText += "91871,";
+} 
+
+if (checkedConditions.includes("COPD mit respiratorische Insuffizienz") ) {
+    resultText += "91876,";
+} 
+
+if (checkedConditions.includes("Atherosklerose der Extremitätenarterien") ) {
+    resultText += "91881,";
+} 
+
+if ((age >= 40) &&  checkedConditions.includes("Asthma bronchiale")&& !checkedConditions.includes("COPD Grad III")&& !checkedConditions.includes("COPD Grad IV")) {
+    resultText += "91885,";
+}
+
+
+            // Display the result in the additionalInfo textbox
+            document.getElementById("additionalInfo").value = resultText;
+        }
+    </script>
+</body>
+</html>
